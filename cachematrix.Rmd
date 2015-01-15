@@ -1,12 +1,12 @@
-## As calculating the inverse of a matrix can be a costly
-## calculation, it can be beneficial to cache the inverse
-## and retrive it when needed.
+As calculating the inverse of a matrix can be a costly
+calculation, it can be beneficial to cache the inverse
+and retrive it when needed.
 
-## A closure function (function written by another function)
-## for storing a matrix and its inverse.
-## Default matrix is the 3x3 identity matrix.
-## Does NOT promise to cache the inverse of the current matrix
-
+A closure function (function written by another function)
+for storing a matrix and its inverse.
+Default matrix is the 3x3 identity matrix.
+Does NOT promise to cache the inverse of the current matrix
+```{r}
 makeCacheMatrix <- function(x = diag(3)) {
   inv <- NULL #Upon creation no inverse is cached.
   
@@ -31,11 +31,12 @@ makeCacheMatrix <- function(x = diag(3)) {
        "setInverse" = setinv, 
        "getInverse" = getinv)
 }
+```
 
+Calculates the inverse of a matrix. If the inverse has
+been Calculated previously the cached inverse is returned
 
-## Calcualtes the inverse of a matrix. If the inverse has
-## been calculated previously the cached inverse is returned
-
+```{r}
 cacheSolve <- function(x, ...) {
 
   # retrive the cached inverse
@@ -58,3 +59,14 @@ cacheSolve <- function(x, ...) {
   # return the inverse
   inv
 }
+```
+
+Testing if the functions works
+```{r}
+ma = makeCacheMatrix(matrix(c(4, 7, 2, 6),2, 2, byrow = TRUE))
+cacheSolve(ma)
+```
+A matrix mutiplied by its inverse should give the identity matrix
+```{r}
+ma$getMatrix() %*% ma$getInverse()
+```
