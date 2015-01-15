@@ -1,3 +1,6 @@
+## For a html markdown of this file along with a simple test see:
+## http://htmlpreview.github.io/?https://github.com/jacobfredsoe/ProgrammingAssignment2/blob/master/cachematrix.html
+
 ## As calculating the inverse of a matrix can be a costly
 ## calculation, it can be beneficial to cache the inverse
 ## and retrive it when needed.
